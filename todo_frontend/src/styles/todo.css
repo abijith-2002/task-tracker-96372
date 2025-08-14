@@ -113,6 +113,12 @@
   cursor: default;
 }
 
+/* Strikethrough when completed */
+.task-item.completed .task-title,
+.task-title.completed {
+  text-decoration: line-through;
+}
+
 /* Right-side vector/action (style_7 as color reference) */
 .task-options {
   min-width: 28px;

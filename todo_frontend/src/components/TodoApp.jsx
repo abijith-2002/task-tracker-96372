@@ -101,7 +101,7 @@ function TodoApp() {
                   onClick={() => toggleTask(task.id)}
                 />
                 <span
-                  className="task-title"
+                  className={`task-title${task.completed ? ' completed' : ''}`}
                   onClick={() => toggleTask(task.id)}
                   role="button"
                   tabIndex={0}
