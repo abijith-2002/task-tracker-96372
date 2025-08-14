@@ -1,0 +1,347 @@
+ /* Screen background (Frame style_0) */
+.screen--todo {
+  background: var(--color-0f0f0f);
+}
+
+/* Header group (bg: style_1) */
+.todo-header {
+  height: var(--space-98);
+  background: var(--color-1a1a1a);
+  border-bottom: 1px solid var(--color-2a2a2a);
+  display: flex;
+  align-items: center;
+}
+
+/* Header text group ("Tasks" + "1 of N completed") */
+.todo-title {
+  margin: 0;
+  font-family: var(--typo-4-family);
+  font-size: var(--typo-4-size);
+  font-weight: var(--typo-4-weight);
+  line-height: var(--typo-4-line);
+  color: var(--typo-4-color);
+}
+
+.todo-subtitle {
+  margin: 4px 0 0 0;
+  font-family: var(--typo-5-family);
+  font-size: var(--typo-5-size);
+  font-weight: var(--typo-5-weight);
+  line-height: var(--typo-5-line);
+  color: var(--typo-5-color);
+  opacity: 0.9;
+}
+
+/* Main content area */
+.todo-main {
+  flex: 1;
+  display: block;
+}
+
+.todo-content {
+  /* Figma task cards width is 525 */
+  max-width: 525px;
+  margin: var(--space-24) auto;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* Task item container (Rectangle 1 style_5) */
+.task-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-24);
+  height: var(--space-74);
+  padding: 0 var(--space-24);
+  background: var(--color-1a1a1a);
+  border: 1px solid var(--color-2a2a2a);
+  border-radius: var(--radius-25);
+}
+
+/* Ellipse 1 (style_6) - interactive checkbox */
+.task-checkbox {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-bb86fc);
+  background: transparent;
+  display: inline-block;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.task-item.completed .task-checkbox {
+  background: var(--color-bb86fc); /* style_8 for filled state */
+  border-color: var(--color-bb86fc);
+}
+
+.task-item.completed .task-checkbox::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 5px;
+  width: 7px;
+  height: 4px;
+  border: 1px solid var(--color-000000); /* style_9 border color for check vector */
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+}
+
+/* Task title (typo_6) */
+.task-title {
+  font-family: var(--typo-6-family);
+  font-size: var(--typo-6-size);
+  font-weight: var(--typo-6-weight);
+  line-height: var(--typo-6-line);
+  color: var(--typo-6-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+
+/* Strikethrough when completed */
+.task-item.completed .task-title,
+.task-title.completed {
+  text-decoration: line-through;
+}
+
+/* Right-side vector/action (style_7 as color reference) */
+.task-options {
+  min-width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--color-696969);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.task-options:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.task-options .dots {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.task-options .dots::before,
+.task-options .dots::after,
+.task-options .dots span {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 2px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.task-options .dots::before { left: 0; }
+.task-options .dots span { left: 5px; }
+.task-options .dots::after { right: 0; }
+
+/* Delete icon button (×) */
+.task-delete {
+  min-width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--color-777777);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.task-delete:hover {
+  background: rgba(255,255,255,0.04);
+  color: #e53935; /* accent for delete action */
+}
+
+.task-item .task-delete:focus-visible {
+  outline: 2px solid var(--color-bb86fc);
+  outline-offset: 2px;
+}
+
+/* Floating Add Button (add group - style_3) */
+.fab {
+  position: fixed;
+  right: var(--space-24);
+  bottom: var(--space-24);
+  width: var(--space-70);
+  height: var(--space-70);
+  border-radius: var(--radius-25);
+  background: var(--color-bb86fc);
+  color: var(--color-000000);
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  display: grid;
+  place-items: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+.fab:active {
+  transform: translateY(0);
+}
+
+.fab-plus {
+  display: inline-block;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 700;
+  transform: translateY(-1px); /* optically center plus */
+}
+
+/* Modal overlay and dialog */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: var(--space-24);
+  animation: fadeIn 120ms ease-out;
+}
+
+.add-dialog {
+  width: min(520px, 100%);
+  background: var(--color-1a1a1a);
+  border: 1px solid var(--color-2a2a2a);
+  border-radius: var(--radius-20);
+  padding: 20px;
+  color: var(--color-ffffff);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transform: translateY(4px);
+  animation: slideUp 140ms ease-out;
+}
+
+.add-dialog-title {
+  margin: 0 0 6px 0;
+  font-family: var(--typo-4-family);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.add-dialog-desc {
+  margin: 0 0 14px 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+.add-dialog-input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: var(--radius-10);
+  border: 1px solid var(--color-2a2a2a);
+  background: var(--color-15101c);
+  color: var(--color-ffffff);
+  outline: none;
+}
+
+.add-dialog-input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.add-dialog-input:focus-visible {
+  outline: 2px solid var(--color-bb86fc);
+  outline-offset: 2px;
+}
+
+.add-dialog-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 16px;
+  line-height: 1;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--color-bb86fc);
+  color: var(--color-000000);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.btn-primary:hover {
+  opacity: 0.95;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-ffffff);
+  border: 1px solid var(--color-2a2a2a);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(8px); opacity: 0.98; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .todo-content { max-width: 100%; }
+}
