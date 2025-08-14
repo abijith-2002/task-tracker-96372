@@ -160,6 +160,32 @@
 .task-options .dots span { left: 5px; }
 .task-options .dots::after { right: 0; }
 
+/* Delete icon button (×) */
+.task-delete {
+  min-width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--color-777777);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.task-delete:hover {
+  background: rgba(255,255,255,0.04);
+  color: #e53935; /* accent for delete action */
+}
+
+.task-item .task-delete:focus-visible {
+  outline: 2px solid var(--color-bb86fc);
+  outline-offset: 2px;
+}
+
 /* Floating Add Button (add group - style_3) */
 .fab {
   position: fixed;

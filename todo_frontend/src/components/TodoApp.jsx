@@ -67,6 +67,12 @@ function TodoApp() {
     });
   }, []);
 
+  // PUBLIC_INTERFACE
+  /** Deletes a task by id. */
+  const deleteTask = useCallback((id) => {
+    setTasks((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
   const total = tasks.length;
   const done = tasks.filter((t) => t.completed).length;
 
@@ -116,13 +122,12 @@ function TodoApp() {
                 </span>
                 <button
                   type="button"
-                  className="task-options"
-                  aria-label="More options"
-                  title="More options"
+                  className="task-delete"
+                  aria-label="Delete task"
+                  title="Delete task"
+                  onClick={() => deleteTask(task.id)}
                 >
-                  <span className="dots">
-                    <span />
-                  </span>
+                  ×
                 </button>
               </li>
             ))}
